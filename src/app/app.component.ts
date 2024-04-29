@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HomeComponent } from './home/components/home/home.component';
 
 
 @Component({
@@ -16,6 +17,8 @@ import { Component } from '@angular/core';
   </main>
 `,
   styleUrls: ['./app.component.css'],
+
+ // imports: [HomeComponent],
   
 
   //en la practica que hacemos, ellos hacen la aplicación sin módulos. Yo como tengo una versión de node antigua y ademas queiro practicar, la hago con módulos
