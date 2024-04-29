@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-root',
   //standalone: false,
  // imports: [],
  template: `
