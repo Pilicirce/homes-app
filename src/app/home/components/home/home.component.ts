@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HousingLocationComponent } from '../housing-location/housing-location.component';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ import { Component } from '@angular/core';
   </form>
  </section>
 `,
+
+
 
   styleUrls: ['./home.component.css'],
 })
