@@ -1,10 +1,10 @@
 .listing {
-    background: var(--accent-color);
+    background: rgb(192, 209, 246);
     border-radius: 30px;
     padding-bottom: 30px;
     }
     .listing-heading {
-    color: var(--primary-color);
+    color:  rgb(72, 94, 147);
     padding: 10px 20px 0 20px;
     }
     .listing-photo {
