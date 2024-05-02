@@ -12,7 +12,7 @@ import { HousingLocation } from '../../interfaces/housinglocation';
 </form>
 </section>
 <section class="results">
-<<app-housing-location *ngFor="let housingLocation of housingLocationList" 
+<app-housing-location *ngFor="let housingLocation of housingLocationList" 
       [housingLocation]="housingLocation"></app-housing-location>
 </section>
 `,
