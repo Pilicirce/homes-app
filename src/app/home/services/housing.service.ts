@@ -5,7 +5,8 @@ import { HousingLocation } from '../interfaces/housinglocation';
   providedIn: 'root'
 })
 export class HousingService {
-  baseUrl = 'http://localhost:3000/locations;'
+  //baseUrl = 'http://localhost:3000/locations';
+  baseUrl = 'https://angular.io/assets/images/tutorials/faa';
   
   housingLocationList: HousingLocation[] = [
     {
