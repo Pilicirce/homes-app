@@ -5,7 +5,7 @@ import { HousingLocation } from '../interfaces/housinglocation';
   providedIn: 'root'
 })
 export class HousingService {
-  url = http://localhost:3000/locations';
+  baseUrl = 'http://localhost:3000/locations;'
   
   housingLocationList: HousingLocation[] = [
     {
@@ -109,7 +109,8 @@ export class HousingService {
     laundry: true
     }
     ];
-  baseUrl: any;
+
+  // baseUrl: any;
 
     
 
