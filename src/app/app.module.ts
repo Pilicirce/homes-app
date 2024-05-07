@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/components/home/home.component';
 import { HousingLocationComponent } from './home/components/housing-location/housing-location.component';
+import { DetailsComponent } from './home/components/details/details.component';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { HousingLocationComponent } from './home/components/housing-location/hou
     AppComponent,
     HomeComponent,
     HousingLocationComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
