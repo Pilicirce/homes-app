@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
         </header>
       </a>
       <section class="content">
-        <router-outlet></router-outlet>
+        <router-outlet></router-outlet> <!-- Aquí se carga dinámicamente el contenido del componente de la ruta actual -->
       </section>
     </main>
   `,
@@ -31,5 +31,5 @@ import { Component } from '@angular/core';
  // styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+  title = 'homes-app'; //esta linea no se si debo dejarla o eliminarla despues de haber metido el enrutamiento
 }
