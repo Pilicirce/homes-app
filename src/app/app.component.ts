@@ -18,7 +18,10 @@ import { HomeComponent } from './home/components/home/home.component';
 `,
   styleUrls: ['./app.component.css'],
 
- // imports: [HomeComponent],
+// imports: [
+//  HomeComponent,
+//  RouterModule,
+//  ],
   
 
   //en la practica que hacemos, ellos hacen la aplicación sin módulos. Yo como tengo una versión de node antigua y ademas queiro practicar, la hago con módulos

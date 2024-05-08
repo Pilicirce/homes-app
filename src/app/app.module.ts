@@ -19,6 +19,7 @@ import { DetailsComponent } from './home/components/details/details.component';
     AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent]
 })
 export class AppModule { }
