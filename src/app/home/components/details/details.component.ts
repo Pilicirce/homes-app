@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../../services/housing.service';
 import { HousingLocation } from '../../interfaces/housinglocation';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
@@ -27,11 +28,31 @@ import { HousingLocation } from '../../interfaces/housinglocation';
 })
 
 export class DetailsComponent {
-  route: ActivatedRoute = inject(ActivatedRoute);
-housingService = inject(HousingService);
-housingLocation: HousingLocation | undefined;
-constructor() {
-const housingLocationId = Number(this.route.snapshot.params['id']);
-this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
-}
+  
+  applyForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl('')
+  });
+  
+housingLocation: any; //esto lo añado porque al crear el formulario y el metodo submitApplication, me pedia declarar housingLocation
+
+  constructor(private housingService: HousingService) { }
+
+  submitApplication() {
+    this.housingService.submitApplication(
+      this.applyForm.value.firstName ?? '',
+      this.applyForm.value.lastName ?? '',
+      this.applyForm.value.email ?? ''
+    );
+  }
+
+//   route: ActivatedRoute = inject(ActivatedRoute);
+// housingService = inject(HousingService);
+// housingLocation: HousingLocation | undefined;
+// constructor() {
+// const housingLocationId = Number(this.route.snapshot.params['id']);
+// this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+// }
+
 }
