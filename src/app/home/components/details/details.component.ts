@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../../services/housing.service';
@@ -39,17 +39,23 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./details.component.css']
 })
 
-export class DetailsComponent {
-  
+export class DetailsComponent implements OnInit {
   applyForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl('')
   });
 
-housingLocation: any; //esto lo añado porque al crear el formulario y el metodo submitApplication, me pedia declarar housingLocation
+  housingLocation: HousingLocation | undefined;
 
-  constructor(private housingService: HousingService) { }
+  constructor(private housingService: HousingService, private route: ActivatedRoute) { }
+  
+  ngOnInit() {
+    const housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
+    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+  }
+
+ // constructor(private housingService: HousingService) { }
 
   submitApplication() {
     this.housingService.submitApplication(
