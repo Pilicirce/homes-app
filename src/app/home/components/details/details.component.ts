@@ -55,7 +55,6 @@ export class DetailsComponent implements OnInit {
     this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
   }
 
- // constructor(private housingService: HousingService) { }
 
   submitApplication() {
     this.housingService.submitApplication(
@@ -64,13 +63,5 @@ export class DetailsComponent implements OnInit {
       this.applyForm.value.email ?? ''
     );
   }
-
-//   route: ActivatedRoute = inject(ActivatedRoute);
-// housingService = inject(HousingService);
-// housingLocation: HousingLocation | undefined;
-// constructor() {
-// const housingLocationId = Number(this.route.snapshot.params['id']);
-// this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
-// }
 
 }
