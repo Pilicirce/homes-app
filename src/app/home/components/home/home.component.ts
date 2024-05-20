@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
 import { HousingLocation } from '../../interfaces/housinglocation';
 import { HousingService } from '../../services/housing.service';
@@ -8,9 +8,10 @@ import { HousingService } from '../../services/housing.service';
   selector: 'app-home',
   template: `
 <section>
-<form>
+<form (ngSubmit)="filterResults(filterInput.value)">
 <input type="text" placeholder="Filter by city" #filter>
-<button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+<!-- <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button> -->
+<button class="primary" type="submit">Search</button>
 </form>
 </section>
 <section class="results">
@@ -23,7 +24,7 @@ import { HousingService } from '../../services/housing.service';
 })
 
 
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
  
 housingLocationList: HousingLocation[] = [];
@@ -31,23 +32,29 @@ filteredLocationList: HousingLocation[] = [];
 
 housingService: HousingService = inject(HousingService);
 
-filterResults(text: string) {
-  if(!text) {
-  this.filteredLocationList = this.housingLocationList;
-  return;
-  }
-  this.filteredLocationList = this.housingLocationList.filter(
-    housingLocation => housingLocation?.city.toLowerCase().includes(text.toLowerCase())
-    );
-    }
+@ViewChild('filterInput') filterInput!: ElementRef; //para obtener una referencia al elemento del input en el DOM
 
 constructor() {
   this.housingLocationList = this.housingService.getAllHousingLocations();
   this.filteredLocationList = this.housingLocationList;
   }
 
+  ngAfterViewInit() {  // esto es para aplicar el filtro si pulsamos "Enter" tambien (en vez del boton search)
+    this.filterInput.nativeElement.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        this.filterResults(this.filterInput.nativeElement.value);
+      }
+    });
+  }
 
-
+  filterResults(text: string) {
+    if (!text) {
+      this.filteredLocationList = this.housingLocationList;
+      return;
+    }
+    this.filteredLocationList = this.housingLocationList.filter(
+      housingLocation => housingLocation?.city.toLowerCase().includes(text.toLowerCase())
+    );
+  }
 }
-
-
