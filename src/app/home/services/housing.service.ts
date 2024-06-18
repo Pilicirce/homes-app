@@ -4,8 +4,7 @@ import { HousingLocation } from '../interfaces/housinglocation';
 @Injectable({
   providedIn: 'root'
 })
-export class HousingService {
-  //baseUrl = 'http://localhost:3000/locations';
+export class HousingService { //está configurado apra proporcionar una lista de ubicaciones de viviendas
   baseUrl = 'https://angular.io/assets/images/tutorials/faa';
   
   housingLocationList: HousingLocation[] = [
