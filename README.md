@@ -12,7 +12,15 @@ Application that provides a small REST API to get houses information from.... da
  ______________
 
 ## Build with
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
+This project was generated with
+
+-[Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
+
+-JavaScript
+
+-TypeScript
+
+-GitHub
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
