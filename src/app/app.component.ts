@@ -5,18 +5,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   //standalone: false,
  // imports: [],
- template: `
-  <main>
-      <a [routerLink]="['/']">
-        <header class="brand-name">
-          <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true">
-        </header>
-      </a>
-      <section class="content">
-        <router-outlet></router-outlet> <!-- Aquí se carga dinámicamente el contenido del componente de la ruta actual -->
-      </section>
-    </main>
-  `,
+ templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 
 // imports: [
