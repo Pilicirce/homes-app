@@ -1,5 +1,4 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../../services/housing.service';
 import { HousingLocation } from '../../interfaces/housinglocation';
@@ -24,7 +23,11 @@ export class DetailsComponent implements OnInit {
   
   ngOnInit() {
     const housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    //this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    this.housingService.getHousingLocationById(housingLocationId).subscribe((data: HousingLocation) => {
+      this.housingLocation = data;
+      console.log('Housing location details:', this.housingLocation);
+    });
   }
 
 
