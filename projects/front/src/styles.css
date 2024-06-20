@@ -21,6 +21,14 @@
     color: white;
     border-radius: 8px;
   }
+
+  button.shadow {
+    padding: 10px;
+    border: solid 1px var(--primary-color);
+    background: var(--shadow-color);
+    color: white;
+    border-radius: 8px;
+  }
   
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
