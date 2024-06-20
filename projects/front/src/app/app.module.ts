@@ -7,6 +7,11 @@ import { DetailsComponent } from './home/components/details/details.component';
 import { HousingLocationComponent } from './home/components/housing-location/housing-location.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { ApplyFormComponent } from './home/components/apply-form/apply-form.component';
+
 
 
 @NgModule({
@@ -14,14 +19,18 @@ import { CommonModule } from '@angular/common';
     AppComponent,
     HomeComponent,
     HousingLocationComponent,
-    DetailsComponent,  //Declara DetailsComponent
+    DetailsComponent,
+    ApplyFormComponent,  //Declara DetailsComponent
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule, // Importa ReactiveFormsModule aquí
-    CommonModule 
+    CommonModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   

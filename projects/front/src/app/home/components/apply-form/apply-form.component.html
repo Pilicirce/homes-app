@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Apply to live here</h2>
+<mat-dialog-content>
+  <form [formGroup]="applyForm" (ngSubmit)="onSubmit()">
+    <label for="first-name">First Name</label>
+    <input id="first-name" type="text" formControlName="firstName">
+    <label for="last-name">Last Name</label>
+    <input id="last-name" type="text" formControlName="lastName">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email">
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onSubmit()" cdkFocusInitial>Apply</button>
+</mat-dialog-actions>
