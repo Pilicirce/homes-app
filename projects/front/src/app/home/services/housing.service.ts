@@ -139,8 +139,7 @@ export class HousingService {
 
 
     constructor() { }
-    //constructor(private http: HttpClient) {}
-
+    
    getAllHousingLocations(): HousingLocation[] {
        return this.housingLocationList;
        }

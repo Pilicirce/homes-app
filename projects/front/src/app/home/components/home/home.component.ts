@@ -24,33 +24,15 @@ export class HomeComponent implements OnInit {
 
   constructor() {
     this.housingLocationList = this.housingService.getAllHousingLocations();
-    console.log('Initial housing locations:', this.housingLocationList); //esto lo debo de borrar despues
     this.filteredLocationList = this.housingLocationList;
     this.updatePagedList();
 
-    // this.housingService.getAllHousingLocations().subscribe((data: HousingLocation[]) => {
-    //   this.housingLocationList = data;
-    //   console.log('Initial housing locations:', this.housingLocationList);
-    //   this.filteredLocationList = this.housingLocationList;
-    // });
   }
 
   ngOnInit(): void {
     // Cargar datos adicionales si es necesario
   }
 
-  // filterResults(text: string) {
-  //   console.log('Filtering results for:', text); //esto lo debo de borrar despues
-  //   if (!text) {
-  //     this.filteredLocationList = this.housingLocationList;
-  //     console.log('No filter text, showing all locations'); //esto lo debo de borrar despues
-  //     return;
-  //   }
-  //   this.filteredLocationList = this.housingLocationList.filter(
-  //     housingLocation => housingLocation.city.toLowerCase().includes(text.toLowerCase())
-  //   );
-  //   console.log('Filtered locations:', this.filteredLocationList);
-  // }
   filterResults(text: string) {
     this.filteredLocationList = text ? this.housingLocationList.filter(
       housingLocation => housingLocation.city.toLowerCase().includes(text.toLowerCase())

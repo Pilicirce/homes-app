@@ -13,12 +13,7 @@ import { ApplyFormComponent } from '../apply-form/apply-form.component';
 })
 
 export class DetailsComponent implements OnInit {
-  // applyForm = new FormGroup({
-  //   firstName: new FormControl(''),
-  //   lastName: new FormControl(''),
-  //   email: new FormControl('')
-  // });
-
+ 
   housingLocation: HousingLocation | undefined;
 
   constructor(
@@ -30,11 +25,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     const housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
     this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
-    // this.housingService.getHousingLocationById(housingLocationId).subscribe((data: HousingLocation) => {
-    //   this.housingLocation = data;
-    //   console.log('Housing location details:', this.housingLocation);
-    // });
-  }
+    }
 
   openApplyDialog(): void {
     const dialogRef = this.dialog.open(ApplyFormComponent, {
@@ -42,13 +33,7 @@ export class DetailsComponent implements OnInit {
       data: { location: this.housingLocation }
     });
 
-  // submitApplication() {
-  //   this.housingService.submitApplication(
-  //     this.applyForm.value.firstName ?? '',
-  //     this.applyForm.value.lastName ?? '',
-  //     this.applyForm.value.email ?? ''
-  //   );
-  // }
+  
 
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');

@@ -21,13 +21,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     HomeComponent,
     HousingLocationComponent,
     DetailsComponent,
-    ApplyFormComponent,  //Declara DetailsComponent
+    ApplyFormComponent, 
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule, // Importa ReactiveFormsModule aquí
+    ReactiveFormsModule, 
     CommonModule,
     BrowserAnimationsModule,
     MatDialogModule,
