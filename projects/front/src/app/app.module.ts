@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { ApplyFormComponent } from './home/components/apply-form/apply-form.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -30,7 +31,8 @@ import { ApplyFormComponent } from './home/components/apply-form/apply-form.comp
     CommonModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule
   ],
   providers: [],
   

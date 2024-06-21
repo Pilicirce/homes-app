@@ -5,6 +5,12 @@
   </form>
 </section>
 <section class="results">
-  <app-housing-location *ngFor="let housingLocation of filteredLocationList" 
+  <app-housing-location *ngFor="let housingLocation of pagedHousingLocationList" 
     [housingLocation]="housingLocation"></app-housing-location>
 </section>
+
+<mat-paginator [length]="housingLocationList.length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="[6, 12, 24]"
+               (page)="handlePageEvent($event)">
+</mat-paginator>

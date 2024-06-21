@@ -19,6 +19,13 @@
     .listing-location::before {
     content: url("/assets/location-pin.svg") / "";
     }
+
+    /* esto lo creo yo, pero en otra parte pone la size como 24 pt; en el details.component */
+    .listing-location { 
+        font-size: 14pt;
+        margin-bottom: 15px;
+        }
+
     section.listing a {
     padding-left: 20px;
     text-decoration: none;
