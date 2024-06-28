@@ -1,0 +1,30 @@
+package com.exerc.mybackend.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import com.example.back.entities.HousingLocation;
+import com.example.back.services.HousingService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/housing")
+public class HousingController {
+    @Autowired
+    private HousingService housingService;
+
+    @GetMapping("/{id}")
+    public HousingLocation getHousingLocationById(@PathVariable int id) {
+        return housingService.getHousingLocationById(id);
+    }
+
+    @PostMapping
+    public void createHousingLocation(@RequestBody HousingLocation housingLocation) {
+        housingService.saveHousingLocation(housingLocation);
+    }
+
+    @GetMapping
+    public List<HousingLocation> getAllHousingLocations() {
+        return housingService.findAll();
+    }
+}
