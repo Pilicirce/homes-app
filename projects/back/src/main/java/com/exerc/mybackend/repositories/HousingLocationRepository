@@ -1,0 +1,8 @@
+package com.exerc.mybackend.repositories;
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.back.entities.HousingLocation;
+
+public interface HousingLocationRepository extends JpaRepository<HousingLocation, Integer> {
+}
