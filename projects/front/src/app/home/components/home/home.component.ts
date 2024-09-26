@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   constructor() {
     this.housingLocationList = this.housingService.getAllHousingLocations();
+    console.log('Initial housing locations:', this.housingLocationList);
     this.filteredLocationList = this.housingLocationList;
     this.updatePagedList();
 
@@ -33,10 +34,13 @@ export class HomeComponent implements OnInit {
     // Cargar datos adicionales si es necesario
   }
 
+  //agragar explicación de esta parte. El text es un campoc obligatorio?u opcional?
   filterResults(text: string) {
+    console.log('Filtering results for:', text);
     this.filteredLocationList = text ? this.housingLocationList.filter(
       housingLocation => housingLocation.city.toLowerCase().includes(text.toLowerCase())
     ) : this.housingLocationList;
+    console.log('Filtered locations:', this.filteredLocationList);
     this.updatePagedList();
   }
 
