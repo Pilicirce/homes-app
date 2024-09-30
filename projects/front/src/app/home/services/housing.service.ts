@@ -11,6 +11,10 @@ export class HousingService {
   //está configurado para proporcionar una lista de ubicaciones de viviendas
   baseUrl = 'https://angular.io/assets/images/tutorials/faa';
 
+  //TODO: para cuando tenga la API REST mia
+  //baseUrl = 'http://localhost:8080/api/housing';
+
+
  // private baseUrl = 'https://api.realtor.com/housing'; // EJEMPLO!! no es la buena! URL de mi API REST (Realtor.com API)
  //26-9-2024: llegué a crear una API-REST en su dia? o busqué una API pública gratuita de casas? (me estoy poniendo al dia)
 
@@ -151,7 +155,7 @@ export class HousingService {
        }
 
     // getAllHousingLocations(): Observable<HousingLocation[]> {
-    //     return this.http.get<HousingLocation[]>(this.baseUrl);
+    //     return this.http.get<HousingLocation[]>(`${this.baseUrl}`);
     // }
 
 
@@ -165,12 +169,12 @@ export class HousingService {
 
   
     // addHousingLocation(housingLocation: HousingLocation): Observable<HousingLocation> {
-    //     return this.http.post<HousingLocation>(this.baseUrl, housingLocation);
+    //     return this.http.post<HousingLocation>(`${this.baseUrl}`, housingLocation);
     //   }
 
 
     // updateHousingLocation(housingLocation: HousingLocation): Observable<HousingLocation> {
-    //     return this.http.put<HousingLocation>(`${this.baseUrl}/${housingLocation.id}`, housingLocation);
+    //     return this.http.put<HousingLocation>(`${this.baseUrl}/${id}`, housingLocation);
     //   }
 
 
