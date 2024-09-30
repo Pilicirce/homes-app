@@ -12,7 +12,13 @@ export class HousingService {
   baseUrl = 'https://angular.io/assets/images/tutorials/faa';
 
  // private baseUrl = 'https://api.realtor.com/housing'; // EJEMPLO!! no es la buena! URL de mi API REST (Realtor.com API)
+ //26-9-2024: llegué a crear una API-REST en su dia? o busqué una API pública gratuita de casas? (me estoy poniendo al dia)
 
+//TODO: para cuando tenga la API REST pública o la BBDD, debo quitar el array de HousingLocation y descomentar las propiedades de abajo
+//  housingLocationList: HousingLocation[] = [];
+//   filteredLocationList: HousingLocation[] = [];
+
+//   housingService: HousingService = inject(HousingService);
   
   housingLocationList: HousingLocation[] = [
     {
