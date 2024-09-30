@@ -27,6 +27,14 @@ export class DetailsComponent implements OnInit {
     this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
     }
 
+    //TODO: para cuando tenga API o BBDD, debo ajuntar en ngOnInit() y descomentar lo de abajo.
+    // ngOnInit() {
+    //   const housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
+    //   this.housingService.getHousingLocationById(housingLocationId).subscribe((data: HousingLocation) => {
+    //     this.housingLocation = data;
+    //     console.log('Housing location details:', this.housingLocation);
+    //   });
+
   openApplyDialog(): void {
     const dialogRef = this.dialog.open(ApplyFormComponent, {
       width: '250px',
