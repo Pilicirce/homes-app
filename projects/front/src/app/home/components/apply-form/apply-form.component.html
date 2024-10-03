@@ -1,14 +1,18 @@
 <h2 mat-dialog-title>Apply to live here</h2>
 <mat-dialog-content>
   <form [formGroup]="applyForm" (ngSubmit)="onSubmit()">
-    <label for="first-name">First Name</label>
-    <input id="first-name" type="text" formControlName="firstName">
-    <br>
-    <label for="last-name">Last Name</label>
-    <input id="last-name" type="text" formControlName="lastName">
-    <br>
+    <div class="form-group">
+      <label for="first-name">First Name</label>
+      <input id="first-name" type="text" formControlName="firstName">
+    </div>
+    <div class="form-group">
+     <label for="last-name">Last Name</label>
+     <input id="last-name" type="text" formControlName="lastName">
+    </div>
+    <div class="form-group">
     <label for="email">Email</label>
     <input id="email" type="email" formControlName="email">
+    </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
