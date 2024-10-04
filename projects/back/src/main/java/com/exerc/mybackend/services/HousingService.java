@@ -2,8 +2,8 @@ package com.exerc.mybackend.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.back.entities.HousingLocation;
-import com.example.back.repositories.HousingLocationRepository;
+import com.exerc.mybackend.model.HousingLocation;
+import com.exerc.mybackend.repositories.HousingLocationRepository;
 
 @Service
 public class HousingService {
