@@ -4,12 +4,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 public class HousingLocation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String name;
     private String city;
     private String state;
@@ -21,4 +27,21 @@ public class HousingLocation {
     private boolean parking;
 
     // Getters y Setters
+
+    public HousingLocation() {
+    }
+
+    public HousingLocation(String name, String city, String state, int availableUnits, boolean wifi, boolean laundry, int bedrooms, boolean parking) {
+        this.name = name;
+        this.city = city;
+        this.state = state;
+        this.availableUnits = availableUnits;
+        this.wifi = wifi;
+        this.laundry = laundry;
+        this.bedrooms = bedrooms;
+        this.parking = parking;
+    }
+
+    // Getters y setters
+    
 }
