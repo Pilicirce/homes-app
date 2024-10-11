@@ -2,10 +2,9 @@ package com.exerc.mybackend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-// import com.exerc.back.entities.HousingLocation;
-// import com.exerc.back.services.HousingService;
-import com.exerc.mybackend.model.HousingLocation;
-import com.exerc.mybackend.repository.HousingLocationRepository;
+import com.exerc.mybackend.entities.HousingLocation;
+import com.exerc.mybackend.repositories.HousingLocationRepository;
+//import com.exerc.mybackend.services.HousingService;
 
 import java.util.List;
 
