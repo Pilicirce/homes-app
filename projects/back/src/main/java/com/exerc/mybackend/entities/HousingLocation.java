@@ -4,17 +4,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+// import javax.persistence.Entity;
+// import javax.persistence.Id;
+// import javax.persistence.GeneratedValue;
+// import javax.persistence.GenerationType;
 
 @Entity
 public class HousingLocation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private String name;
     private String city;
@@ -26,15 +26,16 @@ public class HousingLocation {
     private int bedrooms;
     private boolean parking;
 
-    // Getters y Setters
-
+    // Constructor vacío para JPA
     public HousingLocation() {
     }
 
-    public HousingLocation(String name, String city, String state, int availableUnits, boolean wifi, boolean laundry, int bedrooms, boolean parking) {
+    // Constructor completo con todos los atributos
+    public HousingLocation(String name, String city, String state, String photo, int availableUnits, boolean wifi, boolean laundry, int bedrooms, boolean parking) {
         this.name = name;
         this.city = city;
         this.state = state;
+        this.photo = photo;
         this.availableUnits = availableUnits;
         this.wifi = wifi;
         this.laundry = laundry;
@@ -43,5 +44,4 @@ public class HousingLocation {
     }
 
     // Getters y setters
-    
 }
