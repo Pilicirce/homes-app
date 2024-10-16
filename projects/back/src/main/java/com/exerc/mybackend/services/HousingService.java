@@ -5,16 +5,46 @@ import org.springframework.stereotype.Service;
 import com.exerc.mybackend.entities.HousingLocation;
 import com.exerc.mybackend.repositories.HousingLocationRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class HousingService {
     @Autowired
     private HousingLocationRepository repository;
 
-    public void saveHousingLocation(HousingLocation location) {
-        repository.save(location);
+     // Método para obtener todas las ubicaciones de vivienda
+     public List<HousingLocation> findAll() {
+        return housingLocationRepository.findAll();
+        
     }
 
-    public HousingLocation getHousingLocationById(int id) {
-        return repository.findById(id).orElse(null);
+    // Método para obtener una ubicación de vivienda por ID
+    public HousingLocation getHousingLocationById(Long id) {
+        Optional<HousingLocation> optional = housingLocationRepository.findById(id);
+        return optional.orElse(null);
+    }
+
+     // Método para guardar una ubicación de vivienda
+     public void saveHousingLocation(HousingLocation housingLocation) {
+        housingLocationRepository.save(housingLocation);
+    }
+
+    // Método para actualizar una ubicación de vivienda
+    public HousingLocation updateHousingLocation(Long id, HousingLocation updatedHousingLocation) {
+        return housingLocationRepository.findById(id)
+                .map(housingLocation -> {
+                    housingLocation.setName(updatedHousingLocation.getName());
+                    housingLocation.setCity(updatedHousingLocation.getCity());
+                    housingLocation.setState(updatedHousingLocation.getState());
+                    housingLocation.setPhoto(updatedHousingLocation.getPhoto());
+                    housingLocation.setAvailableUnits(updatedHousingLocation.getAvailableUnits());
+                    housingLocation.setWifi(updatedHousingLocation.isWifi());
+                    housingLocation.setLaundry(updatedHousingLocation.isLaundry());
+                    return housingLocationRepository.save(housingLocation);
+                }).orElseGet(() -> {
+                    updatedHousingLocation.setId(id);
+                    return housingLocationRepository.save(updatedHousingLocation);
+                });
     }
 }
