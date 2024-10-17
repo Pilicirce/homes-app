@@ -12,7 +12,7 @@
 	<artifactId>mybackend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>myBackend</name>
-	<description>project for backend</description>
+	<description>Project for backend</description>
 	<url/>
 	<!-- <licenses>
 		<license/>
@@ -59,7 +59,7 @@
 			<version>2.2.220</version>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- PostgreSQL -->
+		<!-- PostgreSQL Driver -->
 		<dependency>
    			<groupId>org.postgresql</groupId>
     		<artifactId>postgresql</artifactId>

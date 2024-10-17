@@ -20,14 +20,14 @@ public class HousingService {
     }
 
     // Método para obtener una ubicación de vivienda por ID
-    public HousingLocation getHousingLocationById(Long id) {
-        Optional<HousingLocation> optional = housingLocationRepository.findById(id);
-        return optional.orElse(null);
-    }
-
-    // public Optional<HousingLocation> getHousingLocationById(Long id) {
-    //     return housingLocationRepository.findById(id);
+    // public HousingLocation getHousingLocationById(Long id) {
+    //     Optional<HousingLocation> optional = housingLocationRepository.findById(id);
+    //     return optional.orElse(null);
     // }
+
+    public Optional<HousingLocation> getHousingLocationById(Long id) {
+        return housingLocationRepository.findById(id);
+    }
 
      // Método para guardar una ubicación de vivienda
      public void saveHousingLocation(HousingLocation housingLocation) {
