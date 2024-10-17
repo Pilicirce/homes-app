@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class HousingService {
     @Autowired
-    private HousingLocationRepository repository;
+    private HousingLocationRepository housingLocationRepository;
 
      // Método para obtener todas las ubicaciones de vivienda
      public List<HousingLocation> findAll() {
@@ -24,6 +24,10 @@ public class HousingService {
         Optional<HousingLocation> optional = housingLocationRepository.findById(id);
         return optional.orElse(null);
     }
+
+    // public Optional<HousingLocation> getHousingLocationById(Long id) {
+    //     return housingLocationRepository.findById(id);
+    // }
 
      // Método para guardar una ubicación de vivienda
      public void saveHousingLocation(HousingLocation housingLocation) {
@@ -46,5 +50,10 @@ public class HousingService {
                     updatedHousingLocation.setId(id);
                     return housingLocationRepository.save(updatedHousingLocation);
                 });
+    }
+
+     // Método para eliminar una ubicación de vivienda por ID
+     public void deleteHousingLocation(Long id) {
+        housingLocationRepository.deleteById(id);
     }
 }
