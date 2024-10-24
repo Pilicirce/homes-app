@@ -29,10 +29,15 @@ public class HousingService {
         return housingLocationRepository.findById(id);
     }
 
-     // Método para guardar una ubicación de vivienda
+     // Método para guardar una ubicación de vivienda (create)
      public void saveHousingLocation(HousingLocation housingLocation) {
-        housingLocationRepository.save(housingLocation);
+        //SI la vivienda viene sin foto, asignar una por defecto
+        if (housingLocation.getPhoto() == null || housingLocation.getPhoto().isEmpty()) {
+            housingLocation.setPhoto("http://localhost:8080/images/default.jpg");
+        }
+            return housingLocationRepository.save(housingLocation);
     }
+
 
     // Método para actualizar una ubicación de vivienda
     public HousingLocation updateHousingLocation(Long id, HousingLocation updatedHousingLocation) {
