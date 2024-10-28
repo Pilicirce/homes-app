@@ -30,7 +30,7 @@ public class HousingService {
     }
 
      // Método para guardar una ubicación de vivienda (create)
-     public void saveHousingLocation(HousingLocation housingLocation) {
+     public HousingLocation createHousing(HousingLocation housingLocation) {
         //SI la vivienda viene sin foto, asignar una por defecto
         if (housingLocation.getPhoto() == null || housingLocation.getPhoto().isEmpty()) {
             housingLocation.setPhoto("http://localhost:8080/images/default.jpg");

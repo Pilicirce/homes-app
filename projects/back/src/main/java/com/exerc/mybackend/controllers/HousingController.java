@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.exerc.mybackend.entities.HousingLocation;
 import com.exerc.mybackend.services.HousingService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,10 +30,17 @@ public class HousingController {
         return housingService.getHousingLocationById(id).orElse(null);
     }
 
-    // Crear una nueva ubicación de vivienda (me falta en el service?)
+    // Crear una nueva ubicación de vivienda
+    // @PostMapping
+    // public void createHousingLocation(@RequestBody HousingLocation housingLocation) {
+    //     housingService.saveHousingLocation(housingLocation);
+    // }
+
+    // Crear una nueva ubicación de vivienda
     @PostMapping
-    public void createHousingLocation(@RequestBody HousingLocation housingLocation) {
-        housingService.saveHousingLocation(housingLocation);
+    public ResponseEntity<HousingLocation> createHousing(@RequestBody HousingLocation housingLocation) {
+        HousingLocation createdHousing = housingService.createHousing(housingLocation);
+        return new ResponseEntity<>(createdHousing, HttpStatus.CREATED);
     }
 
     // Actualizar una ubicación de vivienda existente
@@ -61,7 +70,7 @@ public class HousingController {
         if (housingLocation != null) {
             return housingService.updateHousingLocation(id, updatedHousingLocation);
         } else {
-            return null; // Puedes mejorar esto puedo devolver una respuesta HTTP adecuada
+            return null; // Puedo mejorar esto puedo devolver una respuesta HTTP adecuada
         }
     }
 
