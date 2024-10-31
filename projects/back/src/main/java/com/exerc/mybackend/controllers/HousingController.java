@@ -31,12 +31,6 @@ public class HousingController {
     }
 
     // Crear una nueva ubicación de vivienda
-    // @PostMapping
-    // public void createHousingLocation(@RequestBody HousingLocation housingLocation) {
-    //     housingService.saveHousingLocation(housingLocation);
-    // }
-
-    // Crear una nueva ubicación de vivienda
     @PostMapping
     public ResponseEntity<HousingLocation> createHousing(@RequestBody HousingLocation housingLocation) {
         HousingLocation createdHousing = housingService.createHousing(housingLocation);
