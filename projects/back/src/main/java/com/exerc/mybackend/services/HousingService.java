@@ -33,7 +33,7 @@ public class HousingService {
      public HousingLocation createHousing(HousingLocation housingLocation) {
         //SI la vivienda viene sin foto, asignar una por defecto
         if (housingLocation.getPhoto() == null || housingLocation.getPhoto().isEmpty()) {
-            housingLocation.setPhoto("http://localhost:8080/images/default.jpg");
+            housingLocation.setPhoto("http://localhost:8081/images/default.jpg");
         }
             return housingLocationRepository.save(housingLocation);
     }
