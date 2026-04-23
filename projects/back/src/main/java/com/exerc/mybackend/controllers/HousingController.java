@@ -2,12 +2,10 @@ package com.exerc.mybackend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import com.exerc.mybackend.entities.HousingLocation;
 import com.exerc.mybackend.services.HousingService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -30,10 +28,19 @@ public class HousingController {
         return housingService.getHousingLocationById(id).orElse(null);
     }
 
+    //método manual de prueba
+    @GetMapping("/test")
+public ResponseEntity<String> testEndpoint() {
+    return ResponseEntity.ok("El endpoint de prueba está activo");
+}
+
+
     // Crear una nueva ubicación de vivienda
     @PostMapping
     public ResponseEntity<HousingLocation> createHousing(@RequestBody HousingLocation housingLocation) {
+        System.out.println("Llegó al controlador el POST");
         HousingLocation createdHousing = housingService.createHousing(housingLocation);
+        System.out.println("Llegó al controlador el POST- segunda parte");
         return new ResponseEntity<>(createdHousing, HttpStatus.CREATED);
     }
 
@@ -58,15 +65,16 @@ public class HousingController {
     //     }
     // }
 
-    @PutMapping("/{id}")
-    public HousingLocation updateHousingLocation(@PathVariable Long id, @RequestBody HousingLocation updatedHousingLocation) {
-        HousingLocation housingLocation = housingService.getHousingLocationById(id).orElse(null);
-        if (housingLocation != null) {
-            return housingService.updateHousingLocation(id, updatedHousingLocation);
-        } else {
-            return null; // Puedo mejorar esto puedo devolver una respuesta HTTP adecuada
-        }
+  @PutMapping("/{id}")
+public HousingLocation updateHousingLocation(@PathVariable Long id, @RequestBody HousingLocation updatedHousingLocation) {
+    System.out.println("Llegó al controlador el PUT");
+    HousingLocation housingLocation = housingService.getHousingLocationById(id).orElse(null);
+    if (housingLocation != null) {
+        return housingService.updateHousingLocation(id, updatedHousingLocation);
+    } else {
+        return null; // Puedo mejorar esto puedo devolver una respuesta HTTP adecuada
     }
+}
 
     //Borrar una ubicación de vivienda (me falta en el service?)
     @DeleteMapping("/{id}")

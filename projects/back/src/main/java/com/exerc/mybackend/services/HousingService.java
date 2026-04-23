@@ -54,6 +54,7 @@ public class HousingService {
                 }).orElseGet(() -> {
                     updatedHousingLocation.setId(id);
                     return housingLocationRepository.save(updatedHousingLocation);
+                    housingLocationRepository.flush();
                 });
     }
 
