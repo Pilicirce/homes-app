@@ -16,7 +16,7 @@ public class HousingService {
      // Método para obtener todas las ubicaciones de vivienda
      public List<HousingLocation> findAll() {
         return housingLocationRepository.findAll();
-        
+
     }
 
     // Método para obtener una ubicación de vivienda por ID
@@ -40,23 +40,27 @@ public class HousingService {
 
 
     // Método para actualizar una ubicación de vivienda
-    public HousingLocation updateHousingLocation(Long id, HousingLocation updatedHousingLocation) {
-        return housingLocationRepository.findById(id)
-                .map(housingLocation -> {
-                    housingLocation.setName(updatedHousingLocation.getName());
-                    housingLocation.setCity(updatedHousingLocation.getCity());
-                    housingLocation.setState(updatedHousingLocation.getState());
-                    housingLocation.setPhoto(updatedHousingLocation.getPhoto());
-                    housingLocation.setAvailableUnits(updatedHousingLocation.getAvailableUnits());
-                    housingLocation.setWifi(updatedHousingLocation.isWifi());
-                    housingLocation.setLaundry(updatedHousingLocation.isLaundry());
-                    return housingLocationRepository.save(housingLocation);
-                }).orElseGet(() -> {
-                    updatedHousingLocation.setId(id);
-                    return housingLocationRepository.save(updatedHousingLocation);
-                    housingLocationRepository.flush();
-                });
-    }
+
+  public HousingLocation updateHousingLocation(Long id, HousingLocation updatedHousingLocation) {
+    return housingLocationRepository.findById(id)
+      .map(housingLocation -> {
+        housingLocation.setName(updatedHousingLocation.getName());
+        housingLocation.setCity(updatedHousingLocation.getCity());
+        housingLocation.setState(updatedHousingLocation.getState());
+        housingLocation.setPhoto(updatedHousingLocation.getPhoto());
+        housingLocation.setAvailableUnits(updatedHousingLocation.getAvailableUnits());
+        housingLocation.setWifi(updatedHousingLocation.isWifi());
+        housingLocation.setLaundry(updatedHousingLocation.isLaundry());
+        housingLocation.setBedrooms(updatedHousingLocation.getBedrooms());
+        housingLocation.setParking(updatedHousingLocation.isParking());
+        return housingLocationRepository.save(housingLocation);
+      })
+      .orElseGet(() -> {
+        updatedHousingLocation.setId(id);
+        return housingLocationRepository.save(updatedHousingLocation);
+      });
+  }
+
 
      // Método para eliminar una ubicación de vivienda por ID
      public void deleteHousingLocation(Long id) {
