@@ -35,13 +35,20 @@ public ResponseEntity<String> testEndpoint() {
 }
 
 
-    // Crear una nueva ubicación de vivienda
+    // Crear una nueva (ubicación) de vivienda
     @PostMapping
     public ResponseEntity<HousingLocation> createHousing(@RequestBody HousingLocation housingLocation) {
         System.out.println("Llegó al controlador el POST");
         HousingLocation createdHousing = housingService.createHousing(housingLocation);
         System.out.println("Llegó al controlador el POST- segunda parte");
         return new ResponseEntity<>(createdHousing, HttpStatus.CREATED);
+    }
+
+    //método temporal para ver si entra en el controller:
+    @PostMapping("/ping")
+    public ResponseEntity<String> pingPost() {
+      System.out.println("Entró al POST /ping");
+      return ResponseEntity.ok("POST funciona");
     }
 
     // Actualizar una ubicación de vivienda existente
