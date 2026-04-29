@@ -24,7 +24,17 @@ export class DetailsComponent implements OnInit {
   
   ngOnInit() {
     const housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    //this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    this.housingService.getHousingLocationById(housingLocationId).subscribe({
+          next: (data: HousingLocation) => {
+            this.housingLocation = data;
+            console.log('Housing location details:', this.housingLocation);
+          },
+          error: err => {
+            console.error('Error loading housing location details', err);
+          }
+        });
+
     }
 
     //TODO: para cuando tenga API o BBDD, debo ajuntar en ngOnInit() y descomentar lo de abajo.
