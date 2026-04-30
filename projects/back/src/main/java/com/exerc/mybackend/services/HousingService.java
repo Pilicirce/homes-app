@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.exerc.mybackend.entities.HousingLocation;
 import com.exerc.mybackend.repositories.HousingLocationRepository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -19,11 +18,6 @@ public class HousingService {
 
     }
 
-    // Método para obtener una ubicación de vivienda por ID
-    // public HousingLocation getHousingLocationById(Long id) {
-    //     Optional<HousingLocation> optional = housingLocationRepository.findById(id);
-    //     return optional.orElse(null);
-    // }
 
     public Optional<HousingLocation> getHousingLocationById(Long id) {
         return housingLocationRepository.findById(id);

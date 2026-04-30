@@ -7,7 +7,6 @@ import com.exerc.mybackend.services.HousingService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -52,26 +51,6 @@ public ResponseEntity<String> testEndpoint() {
       return ResponseEntity.ok("POST funciona");
     }
 
-    // Actualizar una ubicación de vivienda existente
-    // @PutMapping("/{id}")
-    // public HousingLocation updateHousingLocation(@PathVariable Long id, @RequestBody HousingLocation updatedHousingLocation) {
-    //     HousingLocation housingLocation = housingService.getHousingLocationById(id);
-    //     if (housingLocation != null) {
-    //         housingLocation.setName(updatedHousingLocation.getName());
-    //         housingLocation.setCity(updatedHousingLocation.getCity());
-    //         housingLocation.setState(updatedHousingLocation.getState());
-    //         housingLocation.setPhoto(updatedHousingLocation.getPhoto());
-    //         housingLocation.setAvailableUnits(updatedHousingLocation.getAvailableUnits());
-    //         housingLocation.setWifi(updatedHousingLocation.isWifi());
-    //         housingLocation.setLaundry(updatedHousingLocation.isLaundry());
-    //         housingLocation.setBedrooms(updatedHousingLocation.getBedrooms());
-    //         housingLocation.setParking(updatedHousingLocation.isParking());
-    //         housingService.saveHousingLocation(housingLocation);
-    //         return housingLocation;
-    //     } else {
-    //         return null; // Puedo manejar esto con una excepción o una respuesta adecuada
-    //     }
-    // }
 
   @PutMapping("/{id}")
 public HousingLocation updateHousingLocation(@PathVariable Long id, @RequestBody HousingLocation updatedHousingLocation) {

@@ -2,7 +2,6 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../../services/housing.service';
 import { HousingLocation } from '../../interfaces/housinglocation';
-import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ApplyFormComponent } from '../apply-form/apply-form.component';
 
@@ -24,7 +23,6 @@ export class DetailsComponent implements OnInit {
   
   ngOnInit() {
     const housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
-    //this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
     this.housingService.getHousingLocationById(housingLocationId).subscribe({
           next: (data: HousingLocation) => {
             this.housingLocation = data;
@@ -37,13 +35,6 @@ export class DetailsComponent implements OnInit {
 
     }
 
-    //TODO: para cuando tenga API o BBDD, debo ajuntar en ngOnInit() y descomentar lo de abajo.
-    // ngOnInit() {
-    //   const housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
-    //   this.housingService.getHousingLocationById(housingLocationId).subscribe((data: HousingLocation) => {
-    //     this.housingLocation = data;
-    //     console.log('Housing location details:', this.housingLocation);
-    //   });
 
   openApplyDialog(): void {
     const dialogRef = this.dialog.open(ApplyFormComponent, {
