@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ApplyFormComponent } from './home/components/apply-form/apply-form.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateHousingComponent } from './home/components/create-housing/create-housing.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     HousingLocationComponent,
     DetailsComponent,
-    ApplyFormComponent, 
+    ApplyFormComponent,
+    CreateHousingComponent, 
   ],
 
   imports: [
