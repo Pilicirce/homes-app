@@ -1,1 +1,54 @@
-<p>create-housing works!</p>
+<p>create-housing works!</p><h2>Create new housing</h2>
+
+<form [formGroup]="housingForm" (ngSubmit)="onSubmit()">
+
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+
+  <label>
+    City:
+    <input type="text" formControlName="city">
+  </label>
+
+  <label>
+    State:
+    <input type="text" formControlName="state">
+  </label>
+
+  <label>
+    Available units:
+    <input type="number" formControlName="availableUnits">
+  </label>
+
+  <label>
+    Bedrooms:
+    <input type="number" formControlName="bedrooms">
+  </label>
+
+  <label>
+    Photo URL:
+    <input type="text" formControlName="photo">
+  </label>
+
+  <label>
+    <input type="checkbox" formControlName="wifi">
+    Wifi
+  </label>
+
+  <label>
+    <input type="checkbox" formControlName="laundry">
+    Laundry
+  </label>
+
+  <label>
+    <input type="checkbox" formControlName="parking">
+    Parking
+  </label>
+
+  <button type="submit" [disabled]="housingForm.invalid">
+    Create
+  </button>
+
+</form>
