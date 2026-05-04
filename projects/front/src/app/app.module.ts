@@ -15,7 +15,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateHousingComponent } from './home/components/create-housing/create-housing.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

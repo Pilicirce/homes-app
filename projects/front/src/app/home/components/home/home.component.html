@@ -2,20 +2,12 @@
   <form (submit)="onSubmit($event, filterInput.value)">   <!-- configurado para manejar la búsqueda. Se invoca cuando se envía el formulario -->
     <input type="text" placeholder="Filter by city" #filterInput>
     <button class="primary" type="submit" (click)="logClick()">Search</button>
-    <!-- <button class="primary" type="submit">Search</button> -->
   </form>
 </section>
 <section class="results">
   <app-housing-location *ngFor="let housingLocation of pagedHousingLocationList" 
     [housingLocation]="housingLocation"></app-housing-location>
 </section>
-
-<!-- <mat-paginator 
-               [length]="housingLocationList.length"
-               [pageSize]="pageSize"
-               [pageSizeOptions]="[6, 12, 24]"
-               (page)="handlePageEvent($event)">
-</mat-paginator> -->
 
 <mat-paginator
   [length]="filteredLocationList.length"

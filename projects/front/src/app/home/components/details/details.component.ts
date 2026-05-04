@@ -32,9 +32,7 @@ export class DetailsComponent implements OnInit {
             console.error('Error loading housing location details', err);
           }
         });
-
     }
-
 
   openApplyDialog(): void {
     const dialogRef = this.dialog.open(ApplyFormComponent, {
@@ -43,7 +41,6 @@ export class DetailsComponent implements OnInit {
     });
 
   
-
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
     if (result) {
