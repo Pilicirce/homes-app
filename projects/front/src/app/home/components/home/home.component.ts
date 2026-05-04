@@ -21,17 +21,30 @@ export class HomeComponent implements OnInit {
 constructor(private housingService: HousingService) {}
 
 
-  ngOnInit(): void {
-    this.housingService.getAllHousingLocations().subscribe({
+  // ngOnInit(): void {
+  //   this.housingService.getAllHousingLocations().subscribe({
       
-next: data => {
+// next: data => {
+//       this.housingLocationList = data;
+//       this.filteredLocationList = data;
+//       this.updatePagedList();
+//     },
+//       error: err => console.error('Error loading housing locations', err)
+//     });
+//   }
+
+ngOnInit(): void {
+  this.housingService.getAllHousingLocations().subscribe({
+    next: data => {
       this.housingLocationList = data;
-      this.filteredLocationList = data;
-      this.updatePagedList();
+      this.filteredLocationList = data;   // ← CLAVE
+      this.currentPage = 0;                // ← reset paginación
+      this.updatePagedList();              // ← CLAVE
     },
-      error: err => console.error('Error loading housing locations', err)
-    });
-  }
+    error: err => console.error('Error loading housing locations', err)
+  });
+}
+
 
   //El text es un campoc opcional, que se utiliza para filtrar los resultados de las ubicaciones de viviendas. Si se proporciona un texto, se filtran las ubicaciones para incluir solo aquellas cuyo nombre de ciudad incluye el texto (ignorando mayúsculas y minúsculas). Si no se proporciona texto, se muestran todas las ubicaciones. Después de filtrar, se actualiza la lista paginada para reflejar los resultados filtrados.
   filterResults(text: string) {
