@@ -1,54 +1,66 @@
-<p>create-housing works!</p><h2>Create new housing</h2>
+<section class="create-container">
+  <h2>Create new housing</h2>
 
-<form [formGroup]="housingForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="housingForm" (ngSubmit)="onSubmit()">
 
-  <label>
-    Name:
-    <input type="text" formControlName="name">
-  </label>
+    <label>
+      Name
+      <input type="text" formControlName="name" />
+      <span class="error" *ngIf="housingForm.controls['name'].invalid && housingForm.controls['name'].touched">
+        Name is required
+      </span>
+    </label>
 
-  <label>
-    City:
-    <input type="text" formControlName="city">
-  </label>
+    <label>
+      City
+      <input type="text" formControlName="city" />
+      <span class="error" *ngIf="housingForm.controls['city'].invalid && housingForm.controls['city'].touched">
+        City is required
+      </span>
+    </label>
 
-  <label>
-    State:
-    <input type="text" formControlName="state">
-  </label>
+    <label>
+      Country
+      <input type="text" formControlName="country" />
+      <span class="error" *ngIf="housingForm.controls['country'].invalid && housingForm.controls['country'].touched">
+        Country is required
+      </span>
+    </label>
 
-  <label>
-    Available units:
-    <input type="number" formControlName="availableUnits">
-  </label>
+    <label>
+      Available units
+      <input type="number" formControlName="availableUnits" min="0" />
+    </label>
 
-  <label>
-    Bedrooms:
-    <input type="number" formControlName="bedrooms">
-  </label>
+    <label>
+      Bedrooms
+      <input type="number" formControlName="bedrooms" min="0" />
+    </label>
 
-  <label>
-    Photo URL:
-    <input type="text" formControlName="photo">
-  </label>
+    <label>
+      Photo URL
+      <input type="text" formControlName="photo" />
+    </label>
 
-  <label>
-    <input type="checkbox" formControlName="wifi">
-    Wifi
-  </label>
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" formControlName="wifi" />
+        Wifi
+      </label>
 
-  <label>
-    <input type="checkbox" formControlName="laundry">
-    Laundry
-  </label>
+      <label>
+        <input type="checkbox" formControlName="laundry" />
+        Laundry
+      </label>
 
-  <label>
-    <input type="checkbox" formControlName="parking">
-    Parking
-  </label>
+      <label>
+        <input type="checkbox" formControlName="parking" />
+        Parking
+      </label>
+    </div>
 
-  <button type="submit" [disabled]="housingForm.invalid">
-    Create
-  </button>
-
-</form>
+    <button type="submit" [disabled]="housingForm.invalid">
+      Create housing
+    </button>
+  </form>
+</section>

@@ -23,7 +23,7 @@ export class CreateHousingComponent implements OnInit {
     this.housingForm = new FormGroup({
       name: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
       photo: new FormControl(''),
       availableUnits: new FormControl(0, Validators.required),
       bedrooms: new FormControl(0, Validators.required),
@@ -34,15 +34,18 @@ export class CreateHousingComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.housingForm.valid) {
-      this.housingService.createHousingLocation(this.housingForm.value)
-        .subscribe({
-          next: () => {
-            console.log('Housing created');
-            this.router.navigate(['/']);
-          },
-          error: err => console.error('Error creating housing', err)
-        });
-    }
+  if (this.housingForm.invalid) {
+    this.housingForm.markAllAsTouched();
+    return;
   }
+
+  this.housingService.createHousingLocation(this.housingForm.value)
+    .subscribe({
+      next: () => {
+        console.log('Housing created');
+        this.router.navigate(['/']);
+      },
+      error: err => console.error('Error creating housing', err)
+    });
+}
 }
