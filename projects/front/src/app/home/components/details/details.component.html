@@ -1,4 +1,11 @@
-    <article *ngIf="housingLocation; else loading">
+   <button
+  mat-raised-button
+  color="accent"
+  [routerLink]="['/edit', housingLocation?.id]">
+  Edit
+</button>
+
+   <article *ngIf="housingLocation; else loading">
         <img class="listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{ housingLocation.name }}"/>
         <section class="listing-description">
           <h2 class="listing-heading">{{ housingLocation.name }}</h2>

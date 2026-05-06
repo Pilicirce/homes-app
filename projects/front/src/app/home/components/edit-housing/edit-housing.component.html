@@ -1,1 +1,47 @@
-<p>edit-housing works!</p>
+<section class="create-container">
+  <h2>Edit housing</h2>
+
+  <form [formGroup]="housingForm" (ngSubmit)="onSubmit()">
+    <!-- exactamente los mismos campos que en Create -->
+
+    <label>
+      Name
+      <input type="text" formControlName="name" />
+    </label>
+
+    <label>
+      City
+      <input type="text" formControlName="city" />
+    </label>
+
+    <label>
+      State
+      <input type="text" formControlName="state" />
+    </label>
+
+    <label>
+      Available units
+      <input type="number" formControlName="availableUnits" />
+    </label>
+
+    <label>
+      Bedrooms
+      <input type="number" formControlName="bedrooms" />
+    </label>
+
+    <label>
+      Photo URL
+      <input type="text" formControlName="photo" />
+    </label>
+
+    <div class="checkbox-group">
+      <label><input type="checkbox" formControlName="wifi" /> Wifi</label>
+      <label><input type="checkbox" formControlName="laundry" /> Laundry</label>
+      <label><input type="checkbox" formControlName="parking" /> Parking</label>
+    </div>
+
+    <button type="submit" [disabled]="housingForm.invalid">
+      Save changes
+    </button>
+  </form>
+</section>
