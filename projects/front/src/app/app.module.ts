@@ -14,6 +14,7 @@ import { ApplyFormComponent } from './home/components/apply-form/apply-form.comp
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateHousingComponent } from './home/components/create-housing/create-housing.component';
+import { EditHousingComponent } from './home/components/edit-housing/edit-housing.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CreateHousingComponent } from './home/components/create-housing/create-
     HousingLocationComponent,
     DetailsComponent,
     ApplyFormComponent,
-    CreateHousingComponent, 
+    CreateHousingComponent,
+    EditHousingComponent, 
   ],
 
   imports: [
