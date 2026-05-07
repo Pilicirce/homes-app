@@ -28,7 +28,7 @@ export class EditHousingComponent implements OnInit {
     this.housingForm = new FormGroup({
       name: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
       photo: new FormControl(''),
       availableUnits: new FormControl(0, Validators.required),
       bedrooms: new FormControl(0, Validators.required),

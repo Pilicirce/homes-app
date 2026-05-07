@@ -16,7 +16,7 @@ public class HousingLocation {
 
     private String name;
     private String city;
-    private String state;
+    private String country;
     private String photo;
     private int availableUnits;
     private boolean wifi;
@@ -29,10 +29,10 @@ public class HousingLocation {
     }
 
     // Constructor completo con todos los atributos
-    public HousingLocation(String name, String city, String state, String photo, int availableUnits, boolean wifi, boolean laundry, int bedrooms, boolean parking) {
+    public HousingLocation(String name, String city, String country, String photo, int availableUnits, boolean wifi, boolean laundry, int bedrooms, boolean parking) {
         this.name = name;
         this.city = city;
-        this.state = state;
+        this.country = country;
         this.photo = photo;
         this.availableUnits = availableUnits;
         this.wifi = wifi;
@@ -67,12 +67,12 @@ public class HousingLocation {
         this.city = city;
     }
 
-    public String getState() {
-        return state;
+    public String getCountry() {
+        return country;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getPhoto() {

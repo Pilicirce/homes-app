@@ -40,7 +40,7 @@ public class HousingService {
       .map(housingLocation -> {
         housingLocation.setName(updatedHousingLocation.getName());
         housingLocation.setCity(updatedHousingLocation.getCity());
-        housingLocation.setState(updatedHousingLocation.getState());
+        housingLocation.setCountry(updatedHousingLocation.getCountry());
         housingLocation.setPhoto(updatedHousingLocation.getPhoto());
         housingLocation.setAvailableUnits(updatedHousingLocation.getAvailableUnits());
         housingLocation.setWifi(updatedHousingLocation.isWifi());
