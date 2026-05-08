@@ -1,9 +1,15 @@
-   <button
-  mat-raised-button
-  color="accent"
-  [routerLink]="['/edit', housingLocation?.id]">
-  Edit
-</button>
+<div class="actions">
+  <button
+    class="primary"
+    [routerLink]="['/edit', housingLocation?.id]">
+    Edit
+  </button>
+  
+  <button class="danger" (click)="onDelete()">
+    Delete
+  </button>
+
+</div>
 
    <article *ngIf="housingLocation; else loading">
         <img class="listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{ housingLocation.name }}"/>

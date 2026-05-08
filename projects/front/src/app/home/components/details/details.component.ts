@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HousingService } from '../../services/housing.service';
 import { HousingLocation } from '../../interfaces/housinglocation';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,6 +18,7 @@ export class DetailsComponent implements OnInit {
   constructor(
     private housingService: HousingService, 
     private route: ActivatedRoute,
+    private router: Router,
     public dialog: MatDialog
   ) { }
   
@@ -48,4 +49,21 @@ export class DetailsComponent implements OnInit {
     }
   });
   }
+
+  onDelete(): void {
+  if (!this.housingLocation) return;
+
+  const confirmed = confirm('Are you sure you want to delete this housing?');
+
+  if (confirmed) {
+    this.housingService.deleteHousingLocation(this.housingLocation.id)
+      .subscribe({
+        next: () => {
+          console.log('Housing deleted');
+          this.router.navigate(['/']);
+        },
+        error: err => console.error('Error deleting housing', err)
+      });
+  }
+}
 }
