@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateHousingComponent } from './home/components/create-housing/create-housing.component';
 import { EditHousingComponent } from './home/components/edit-housing/edit-housing.component';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confi
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
   providers: [],
   

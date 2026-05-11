@@ -5,6 +5,7 @@ import { HousingLocation } from '../../interfaces/housinglocation';
 import { MatDialog } from '@angular/material/dialog';
 import { ApplyFormComponent } from '../apply-form/apply-form.component';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-details',
@@ -20,6 +21,7 @@ export class DetailsComponent implements OnInit {
     private housingService: HousingService, 
     private route: ActivatedRoute,
     private router: Router,
+    private snackBar: MatSnackBar,
     public dialog: MatDialog
   ) { }
   
@@ -66,7 +68,10 @@ onDelete(): void {
       this.housingService.deleteHousingLocation(this.housingLocation!.id)
         .subscribe({
           next: () => {
-            console.log('Housing deleted');
+            this.snackBar.open('Housing deleted successfully', 'Close', {
+              duration: 3000,
+              panelClass: ['success-snackbar']
+            });
             this.router.navigate(['/']);
           },
           error: err => console.error('Error deleting housing', err)

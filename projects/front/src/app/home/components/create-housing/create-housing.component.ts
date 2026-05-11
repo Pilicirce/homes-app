@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HousingService } from '../../services/housing.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class CreateHousingComponent implements OnInit {
 
   constructor(
     private housingService: HousingService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +44,10 @@ export class CreateHousingComponent implements OnInit {
   this.housingService.createHousingLocation(this.housingForm.value)
     .subscribe({
       next: () => {
-        console.log('Housing created');
+        this.snackBar.open('Housing created successfully', 'Close', {
+          duration: 3000,
+          panelClass: ['success-snackbar']
+        });
         this.router.navigate(['/']);
       },
       error: err => console.error('Error creating housing', err)

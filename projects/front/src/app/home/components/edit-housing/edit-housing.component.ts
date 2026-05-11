@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HousingService } from '../../services/housing.service';
 import { HousingLocation } from '../../interfaces/housinglocation';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-edit-housing',
@@ -17,7 +19,8 @@ export class EditHousingComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private housingService: HousingService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -56,7 +59,10 @@ export class EditHousingComponent implements OnInit {
       .updateHousingLocation(this.housingId, this.housingForm.value) //PUT (update del CRUD)
       .subscribe({
         next: () => {
-          console.log('Housing updated');
+          this.snackBar.open('Housing updated successfully', 'Close', {
+            duration: 3000,
+            panelClass: ['success-snackbar']
+          });
           this.router.navigate(['/details', this.housingId]);
         },
         error: err => console.error('Error updating housing', err)
