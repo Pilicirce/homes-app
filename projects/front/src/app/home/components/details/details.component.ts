@@ -4,6 +4,7 @@ import { HousingService } from '../../services/housing.service';
 import { HousingLocation } from '../../interfaces/housinglocation';
 import { MatDialog } from '@angular/material/dialog';
 import { ApplyFormComponent } from '../apply-form/apply-form.component';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-details',
@@ -50,20 +51,27 @@ export class DetailsComponent implements OnInit {
   });
   }
 
-  onDelete(): void {
+onDelete(): void {
   if (!this.housingLocation) return;
 
-  const confirmed = confirm('Are you sure you want to delete this housing?');
+  const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    width: '300px',
+    data: {
+      message: `Are you sure you want to delete  ${this.housingLocation?.name}?`
+    }
+  });
 
-  if (confirmed) {
-    this.housingService.deleteHousingLocation(this.housingLocation.id)
-      .subscribe({
-        next: () => {
-          console.log('Housing deleted');
-          this.router.navigate(['/']);
-        },
-        error: err => console.error('Error deleting housing', err)
-      });
-  }
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.housingService.deleteHousingLocation(this.housingLocation!.id)
+        .subscribe({
+          next: () => {
+            console.log('Housing deleted');
+            this.router.navigate(['/']);
+          },
+          error: err => console.error('Error deleting housing', err)
+        });
+    }
+  });
 }
 }
