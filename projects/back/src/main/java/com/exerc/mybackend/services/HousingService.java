@@ -1,5 +1,6 @@
 package com.exerc.mybackend.services;
 
+import com.exerc.mybackend.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.exerc.mybackend.entities.HousingLocation;
@@ -19,9 +20,13 @@ public class HousingService {
     }
 
 
-    public Optional<HousingLocation> getHousingLocationById(Long id) {
-        return housingLocationRepository.findById(id);
-    }
+  public HousingLocation getHousingLocationById(Long id) {
+    return housingLocationRepository.findById(id)
+      .orElseThrow(() ->
+        new ResourceNotFoundException("Housing with id " + id + " not found")
+      );
+  }
+
 
      // Método para guardar una ubicación de vivienda (create)
      public HousingLocation createHousing(HousingLocation housingLocation) {
@@ -34,7 +39,6 @@ public class HousingService {
 
 
     // Método para actualizar una ubicación de vivienda
-
   public HousingLocation updateHousingLocation(Long id, HousingLocation updatedHousingLocation) {
     return housingLocationRepository.findById(id)
       .map(housingLocation -> {
@@ -49,15 +53,17 @@ public class HousingService {
         housingLocation.setParking(updatedHousingLocation.isParking());
         return housingLocationRepository.save(housingLocation);
       })
-      .orElseGet(() -> {
-        updatedHousingLocation.setId(id);
-        return housingLocationRepository.save(updatedHousingLocation);
-      });
+      .orElseThrow(() ->
+        new ResourceNotFoundException("Housing with id " + id + " not found")
+      );
   }
 
 
      // Método para eliminar una ubicación de vivienda por ID
      public void deleteHousingLocation(Long id) {
-        housingLocationRepository.deleteById(id);
-    }
+       if (!housingLocationRepository.existsById(id)) {
+         throw new ResourceNotFoundException("Housing with id " + id + " not found");
+       }
+       housingLocationRepository.deleteById(id);
+     }
 }

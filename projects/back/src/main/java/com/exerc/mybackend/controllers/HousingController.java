@@ -23,14 +23,15 @@ public class HousingController {
     }
 
      // Obtener una ubicación de vivienda por ID
-    @GetMapping("/{id}")
-    public HousingLocation getHousingLocationById(@PathVariable Long id) {
-        return housingService.getHousingLocationById(id).orElse(null);
-    }
+     @GetMapping("/{id}")
+     public ResponseEntity<HousingLocation> getHousingById(@PathVariable Long id) {
+       HousingLocation housing = housingService.getHousingLocationById(id);
+       return ResponseEntity.ok(housing);
+     }
 
     //método manual de prueba
     @GetMapping("/test")
-public ResponseEntity<String> testEndpoint() {
+    public ResponseEntity<String> testEndpoint() {
     return ResponseEntity.ok("El endpoint de prueba está activo");
 }
 
@@ -52,16 +53,18 @@ public ResponseEntity<String> testEndpoint() {
     }
 
 
+
+
   @PutMapping("/{id}")
-public HousingLocation updateHousingLocation(@PathVariable Long id, @RequestBody HousingLocation updatedHousingLocation) {
-    System.out.println("Llegó al controlador el PUT");
-    HousingLocation housingLocation = housingService.getHousingLocationById(id).orElse(null);
-    if (housingLocation != null) {
-        return housingService.updateHousingLocation(id, updatedHousingLocation);
-    } else {
-        return null; // Puedo mejorar esto puedo devolver una respuesta HTTP adecuada
-    }
-}
+  public ResponseEntity<HousingLocation> updateHousingLocation(
+    @PathVariable Long id,
+    @RequestBody HousingLocation updatedHousingLocation) {
+
+    HousingLocation updated = housingService.updateHousingLocation(id, updatedHousingLocation);
+    return ResponseEntity.ok(updated);
+  }
+
+
 
     //Borrar una ubicación de vivienda (me falta en el service?)
     @DeleteMapping("/{id}")
