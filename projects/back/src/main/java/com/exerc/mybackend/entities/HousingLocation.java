@@ -5,6 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+
 
 @Entity
 @Table(name = "housing")
@@ -14,17 +18,30 @@ public class HousingLocation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required")
     private String name;
-    private String city;
-    private String country;
-    private String photo;
-    private int availableUnits;
-    private boolean wifi;
-    private boolean laundry;
-    private int bedrooms;
-    private boolean parking;
 
-    // Constructor vacío para JPA
+    @NotBlank(message = "City is required")
+    private String city;
+
+  @NotBlank(message = "Country is required")
+  private String country;
+
+  private String photo;
+
+  @Min(value = 0, message = "Available units must be >= 0")
+  private int availableUnits;
+
+  private boolean wifi;
+  private boolean laundry;
+
+  @Min(value = 0, message = "Bedrooms must be >= 0")
+  private int bedrooms;
+
+  private boolean parking;
+
+
+  // Constructor vacío para JPA
     public HousingLocation() {
     }
 
