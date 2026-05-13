@@ -14,6 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CreateHousingComponent implements OnInit {
 
   housingForm!: FormGroup;
+  backendErrors: any = {};
 
   constructor(
     private housingService: HousingService,
@@ -36,6 +37,7 @@ export class CreateHousingComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.backendErrors = {};   //para limpiar errores previos
   if (this.housingForm.invalid) {
     this.housingForm.markAllAsTouched();
     return;
@@ -50,7 +52,10 @@ export class CreateHousingComponent implements OnInit {
         });
         this.router.navigate(['/']);
       },
-      error: err => console.error('Error creating housing', err)
+      error: err => {
+        console.error('Error creating housing', err);
+        this.backendErrors = err.error?.errors;  //para mostrar los errores específicos del backend en el formulario
+      }
     });
 }
 }

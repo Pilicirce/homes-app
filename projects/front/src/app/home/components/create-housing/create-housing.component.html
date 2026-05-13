@@ -4,37 +4,68 @@
   <form [formGroup]="housingForm" (ngSubmit)="onSubmit()">
 
     <label>
-      Name
+      Name *
       <input type="text" formControlName="name" />
-      <span class="error" *ngIf="housingForm.controls['name'].invalid && housingForm.controls['name'].touched">
-        Name is required
-      </span>
+      <div class="error" *ngIf="backendErrors?.name; else nameLocalError">
+        {{ backendErrors.name }}
+      </div>
+      <ng-template #nameLocalError>
+        <span class="error" *ngIf="housingForm.controls['name'].invalid && housingForm.controls['name'].touched">
+          Name is required
+        </span>
+      </ng-template>
     </label>
 
     <label>
-      City
+      City *
       <input type="text" formControlName="city" />
-      <span class="error" *ngIf="housingForm.controls['city'].invalid && housingForm.controls['city'].touched">
-        City is required
-      </span>
+      <div class="error" *ngIf="backendErrors?.city; else cityLocalError">
+        {{ backendErrors.city }}
+      </div>
+      <ng-template #cityLocalError>
+        <span class="error" *ngIf="housingForm.controls['city'].invalid && housingForm.controls['city'].touched">
+          City is required
+        </span>
+      </ng-template>
     </label>
 
     <label>
-      Country
+      Country *
       <input type="text" formControlName="country" />
-      <span class="error" *ngIf="housingForm.controls['country'].invalid && housingForm.controls['country'].touched">
-        Country is required
-      </span>
+      <div class="error" *ngIf="backendErrors?.country; else countryLocalError">
+        {{ backendErrors.country }}
+      </div>
+      <ng-template #countryLocalError>
+        <span class="error" *ngIf="housingForm.controls['country'].invalid && housingForm.controls['country'].touched">
+          Country is required
+        </span>
+      </ng-template>
     </label>
 
     <label>
       Available units
       <input type="number" formControlName="availableUnits" min="0" />
+      <div class="error" *ngIf="backendErrors?.availableUnits; else availableUnitsLocalError">
+        {{ backendErrors.availableUnits }}
+        </div>
+        <ng-template #availableUnitsLocalError>
+          <span class="error" *ngIf="housingForm.controls['availableUnits'].invalid && housingForm.controls['availableUnits'].touched">
+            Available units must be a non-negative number
+          </span>
+        </ng-template>
     </label>
 
     <label>
       Bedrooms
       <input type="number" formControlName="bedrooms" min="0" />
+      <div class="error" *ngIf="backendErrors?.bedrooms; else bedroomsLocalError">
+      {{ backendErrors.bedrooms }}
+    </div>
+    <ng-template #bedroomsLocalError>
+      <span class="error" *ngIf="housingForm.controls['bedrooms'].invalid && housingForm.controls['bedrooms'].touched">
+        Bedrooms must be a non-negative number
+      </span>
+    </ng-template>
     </label>
 
     <label>
