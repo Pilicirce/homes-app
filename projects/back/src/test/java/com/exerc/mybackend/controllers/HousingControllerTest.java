@@ -180,14 +180,23 @@ public class HousingControllerTest {
   @Test
   void shouldReturn404WhenUpdatingNonExistingHousing() throws Exception {
 
-
     when(housingService.updateHousingLocation(eq(99L), any(HousingLocation.class)))
       .thenThrow(new ResourceNotFoundException("Not found"));
 
+    String validJson = """
+        {
+            "name": "Updated House",
+            "city": "Madrid",
+            "country": "Spain",
+            "availableUnits": 2,
+            "bedrooms": 2
+        }
+    """;
+
     mockMvc.perform(put("/api/housing/99")
         .contentType(MediaType.APPLICATION_JSON)
-        .content("{ }"))
-        .andExpect(status().isNotFound());
+        .content(validJson))
+      .andExpect(status().isNotFound());
   }
 
 
