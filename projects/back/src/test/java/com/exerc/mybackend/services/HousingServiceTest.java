@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -137,5 +140,42 @@ class HousingServiceTest {
     });
   }
 
+
+  //testeo que ejecuta el findAll()
+  @Test
+  void shouldReturnAllHousing() {
+
+    HousingLocation h1 = new HousingLocation(
+      "House 1", "Madrid", "Spain", "photo.jpg", 2, true, false, 2, true
+    );
+
+    HousingLocation h2 = new HousingLocation(
+      "House 2", "Barcelona", "Spain", "photo.jpg", 3, true, true, 3, false
+    );
+
+    when(repository.findAll()).thenReturn(Arrays.asList(h1, h2));
+
+    List<HousingLocation> result = housingService.findAll();
+
+    assertEquals(2, result.size());
+    verify(repository).findAll();
+  }
+
+
+
+  //testeo que para la foto venga un sting vacio
+  @Test
+  void shouldSetDefaultPhotoWhenPhotoIsEmpty() {
+
+    HousingLocation housing = new HousingLocation(
+      "House", "Madrid", "Spain", "", 2, true, false, 2, true
+    );
+
+    when(repository.save(any())).thenAnswer(i -> i.getArgument(0));
+
+    HousingLocation result = housingService.createHousing(housing);
+
+    assertEquals("http://localhost:8081/images/default.jpg", result.getPhoto());
+  }
 
 }
