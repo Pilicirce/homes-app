@@ -163,7 +163,7 @@ class HousingServiceTest {
 
 
 
-  //testeo que para la foto venga un sting vacio
+  //testeo que para la foto venga un string vacio
   @Test
   void shouldSetDefaultPhotoWhenPhotoIsEmpty() {
 
@@ -177,5 +177,38 @@ class HousingServiceTest {
 
     assertEquals("http://localhost:8081/images/default.jpg", result.getPhoto());
   }
+
+
+  //testeo que setea foto por defecto si la foto viene null
+  @Test
+  void shouldSetDefaultPhotoWhenPhotoIsNull() {
+
+    HousingLocation housing = new HousingLocation(
+      "House", "Madrid", "Spain", null, 2, true, false, 2, true
+    );
+
+    when(repository.save(any())).thenAnswer(i -> i.getArgument(0));
+
+    HousingLocation result = housingService.createHousing(housing);
+
+    assertEquals("http://localhost:8081/images/default.jpg", result.getPhoto());
+  }
+
+
+  //testeo el caso en que la foto venga "no vacio"
+  @Test
+  void shouldNotOverridePhotoWhenPhotoExists() {
+
+    HousingLocation housing = new HousingLocation(
+      "House", "Madrid", "Spain", "custom.jpg", 2, true, false, 2, true
+    );
+
+    when(repository.save(any())).thenAnswer(i -> i.getArgument(0));
+
+    HousingLocation result = housingService.createHousing(housing);
+
+    assertEquals("custom.jpg", result.getPhoto());
+  }
+
 
 }
